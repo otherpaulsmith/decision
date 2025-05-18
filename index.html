@@ -1,0 +1,2104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="hmdstyle.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Help in Decision</title>
+    <style>
+        .card-header {
+
+            background-color: #45ac34;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 1000px;
+            overflow: hidden;
+            border: none;
+            outline: none;
+        }
+
+        .nav.nav-tabs a {
+            color: #666666;
+        }
+
+        .nav-pills .nav-link.active,
+        .nav-pills .show>.nav-link {
+            color: #fff;
+            background-color: #0dafdd;
+        }
+
+        .form-control {
+
+            border-radius: 0px;
+
+        }
+
+        .custom-control {
+            position: relative;
+            display: inline-block;
+            min-height: 1.5rem;
+            padding-left: 1.5rem;
+            margin-right: 10px;
+            padding-top: 8px;
+        }
+
+        .table td,
+        .table th {
+            padding: .75rem;
+            vertical-align: middle;
+            border-top: 2px solid #dee2e6;
+            font-size: 20px;
+            font-weight: bold;
+            background: #f9f9f9;
+            border: 2px solid #dee2e6;
+        }
+
+        .table tbody tr:first-child td {
+            background: #7befb2;
+        }
+
+        .rangeValue {
+            position: absolute;
+            left: -3px;
+            top: 6px;
+        }
+
+        .overlay {
+            display: none;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: 100000;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .overlay__inner {
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        .overlay__content {
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .nav-pills .nav-link {
+            border-radius: 0rem;
+        }
+
+        .slidecontainer {
+            width: 100%;
+            margin-top: 5px;
+
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            /* Override default CSS styles */
+            appearance: none;
+            width: 100%;
+            /* Full-width */
+            height: 9px;
+            /* Specified height */
+            background: #d3d3d3;
+            /* Grey background */
+            outline: none;
+            /* Remove outline */
+            opacity: 0.7;
+            /* Set transparency (for mouse-over effects on hover) */
+            -webkit-transition: .2s;
+            /* 0.2 seconds transition on hover */
+            transition: opacity .2s;
+        }
+
+        /* Mouse-over effects */
+        .slider:hover {
+            opacity: 1;
+            /* Fully shown on mouse-over */
+        }
+
+        /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            /* Override default look */
+            appearance: none;
+            width: 25px;
+            /* Set a specific slider handle width */
+            height: 25px;
+            /* Slider handle height */
+            background: #4CAF50;
+            /* Green background */
+            cursor: pointer;
+            /* Cursor on hover */
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            /* Set a specific slider handle width */
+            height: 25px;
+            /* Slider handle height */
+            background: #4CAF50;
+            /* Green background */
+            cursor: pointer;
+            /* Cursor on hover */
+        }
+
+        .spinner {
+            width: 75px;
+            height: 75px;
+            display: inline-block;
+            border-width: 2px;
+            border-color: rgba(255, 255, 255, 0.05);
+            border-top-color: #fff;
+            animation: spin 1s infinite linear;
+            border-radius: 100%;
+            border-style: solid;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <form id="step1Form">
+            <div class="card mb-3 mt-3 step-1">
+                <div class="card-header">
+                    Your Decision and Your Name
+                </div>
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        <label for="option1" class="col-sm-2 col-form-label">Your name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" value="" placeholder="Enter your name"
+                                required>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card step-1">
+
+                <div class="card-header">
+                    You can use this tool to help you decide - should I stay or should I go?
+                </div>
+                <div class="card-body">
+
+                    <h5 class="card-title">Thinking about where you might want to move to, you can choose up to 4
+                        alternatives to consider</h5>
+                    <p class="card-text">
+
+
+                        <div class="form-group row">
+                            <label for="option1" class="col-sm-2 col-form-label">Option 1</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="option1" value=""
+                                    placeholder="Enter your option, e.g. Extra care housing" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="option2" class="col-sm-2 col-form-label">Option 2</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="option2"
+                                    placeholder="Enter your option, e.g. Move in with family" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="option3" class="col-sm-2 col-form-label">Option 3</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="option3"
+                                    placeholder="Enter your option, e.g. Bungalow" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="option4" class="col-sm-2 col-form-label">Option 4</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="option4"
+                                    placeholder="Enter your option, e.g. Sheltered housing" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+
+                            <div class="col-sm-5 m-auto">
+                                <button class="btn btn-info btn-lg btn-block" id="firstSubmitBtn"> Next </button>
+                            </div>
+                        </div>
+
+
+                    </p>
+                </div>
+            </div>
+        </form>
+
+
+        <div class="card mt-3 step-2 d-none">
+            <div class="card-header">
+                Your Priorities
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">These are the top 10 things that people consider before moving home</h5>
+                <p class="card-text">On a scale of 0 to 10 where zero is not important at all and 10 is very important
+                </p>
+                <h5>How important are each of the following to you?</h5>
+
+
+
+
+                <div class="form-group row">
+                    <label for="v" class="col-sm-4 col-form-label">Living close to family</label>
+                    <div class="col-sm-8">
+                        <div class="slidecontainer" data-toggle="tooltip" title="Some tooltip text!">
+                            <input type="range" min="0" max="10" value="0" class="slider" id="priority_0">
+                            <div class="rangeValue">0</div>
+                        </div>
+
+                        <!-- <select id="priority_0" class="form-control" name="">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+
+                        </select> -->
+
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="v" class="col-sm-4 col-form-label">Living close to friends</label>
+                    <div class="col-sm-8">
+
+                        <div class="slidecontainer" data-toggle="tooltip" title="Some tooltip text!">
+                            <input type="range" min="0" max="10" value="0" class="slider" id="priority_1">
+                            <div class="rangeValue">0</div>
+                        </div>
+
+
+
+                        <!-- 
+                        <select id="priority_1" class="form-control" name="">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+
+                        </select> -->
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="v" class="col-sm-4 col-form-label">Weekly cost of living</label>
+                    <div class="col-sm-8">
+
+                        <div class="slidecontainer" data-toggle="tooltip" title="Some tooltip text!">
+                            <input type="range" min="0" max="10" value="0" class="slider" id="priority_2">
+                            <div class="rangeValue">0</div>
+                        </div>
+
+
+                        <!-- <select id="priority_2" class="form-control" name="">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+
+                        </select> -->
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="v" class="col-sm-4 col-form-label">Equity in your home</label>
+                    <div class="col-sm-8">
+
+                        <div class="slidecontainer" data-toggle="tooltip" title="Some tooltip text!">
+                            <input type="range" min="0" max="10" value="0" class="slider" id="priority_3">
+                            <div class="rangeValue">0</div>
+                        </div>
+
+                        <!-- <select id="priority_3" class="form-control" name="">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+
+                        </select> -->
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="v" class="col-sm-4 col-form-label">Difficulty in moving home</label>
+                    <div class="col-sm-8">
+
+                        <div class="slidecontainer" data-toggle="tooltip" title="Some tooltip text!">
+                            <input type="range" min="0" max="10" value="0" class="slider" id="priority_4">
+                            <div class="rangeValue">0</div>
+                        </div>
+
+                        <!-- <select id="priority_4" class="form-control" name="">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+
+                        </select> -->
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="v" class="col-sm-4 col-form-label">Control of how you live your life</label>
+                    <div class="col-sm-8">
+
+                        <div class="slidecontainer" data-toggle="tooltip" title="Some tooltip text!">
+                            <input type="range" min="0" max="10" value="0" class="slider" id="priority_5">
+                            <div class="rangeValue">0</div>
+                        </div>
+
+
+                        <!-- <select id="priority_5" class="form-control" name="">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+
+                        </select> -->
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="v" class="col-sm-4 col-form-label">Pride in your home</label>
+                    <div class="col-sm-8">
+
+                        <div class="slidecontainer" data-toggle="tooltip" title="Some tooltip text!">
+                            <input type="range" min="0" max="10" value="0" class="slider" id="priority_6">
+                            <div class="rangeValue">0</div>
+                        </div>
+
+                        <!-- <select id="priority_6" class="form-control" name="">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+
+                        </select> -->
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="v" class="col-sm-4 col-form-label">Living close to shops and services</label>
+                    <div class="col-sm-8">
+
+                        <div class="slidecontainer" data-toggle="tooltip" title="Some tooltip text!">
+                            <input type="range" min="0" max="10" value="0" class="slider" id="priority_7">
+                            <div class="rangeValue">0</div>
+                        </div>
+
+
+                        <!-- <select id="priority_7" class="form-control" name="">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+
+                        </select> -->
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="v" class="col-sm-4 col-form-label">Will suit you as you get older</label>
+                    <div class="col-sm-8">
+
+
+                        <div class="slidecontainer" data-toggle="tooltip" title="Some tooltip text!">
+                            <input type="range" min="0" max="10" value="0" class="slider" id="priority_8">
+                            <div class="rangeValue">0</div>
+                        </div>
+
+                        <!-- <select id="priority_8" class="form-control" name="">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+
+                        </select> -->
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="v" class="col-sm-4 col-form-label">Managing cleaning and repairs</label>
+                    <div class="col-sm-8">
+
+
+                        <div class="slidecontainer" data-toggle="tooltip" title="Some tooltip text!">
+                            <input type="range" min="0" max="10" value="0" class="slider" id="priority_9">
+                            <div class="rangeValue">0</div>
+                        </div>
+
+                        <!-- <select id="priority_9" class="form-control" name="">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+
+                        </select> -->
+
+                    </div>
+                </div>
+                <div class="form-group row">
+
+                    <div class="col-sm-5 m-auto text-center">
+                        <button class="btn btn-secondary btn-lg" id="backToFirst"> Previous </button>
+                        <button class="btn btn-info btn-lg" id="secondSubmitBtn"> Next </button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="card mt-3 mb-5 step-3 d-none">
+            <div class="card-header">
+                Now, rate every factor respective to each choice.
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"> Make sure you tab through each choice and weight/rate every factor!</h5>
+
+                <form id="step3Form">
+                    <ul class="nav nav-tabs nav-justified nav-pills mb-3" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="tab1" data-toggle="tab" href="#tab_content1" role="tab"
+                                aria-controls="home" aria-selected="true">Extra care housing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="tab2" data-toggle="tab" href="#tab_content2" role="tab"
+                                aria-controls="profile" aria-selected="false">Move in with family</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="tab3" data-toggle="tab" href="#tab_content3" role="tab"
+                                aria-controls="contact" aria-selected="false">Bungalow</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="tab4" data-toggle="tab" href="#tab_content4" role="tab"
+                                aria-controls="contact" aria-selected="false">Sheltered housing</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+
+                        <div class="tab-pane fade show active" id="tab_content1" role="tabpanel"
+                            aria-labelledby="home-tab">
+
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Living close to family</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="worse1" name="option_factor[0][0]" value="worse"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="worse1">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same1" name="option_factor[0][0]" value="same"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same1">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better1" name="option_factor[0][0]" value="better"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better1">Better</label>
+                                    </span>
+
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[0][0]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Living close to friends</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="worse2" name="option_factor[0][1]" value="worse"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="worse2">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same2" name="option_factor[0][1]" value="same"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same2">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better2" name="option_factor[0][1]" value="better"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better2">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[0][1]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Weekly cost of living</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="worse3" name="option_factor[0][2]" value="worse"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="worse3">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same3" name="option_factor[0][2]" value="same"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same3">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better3" name="option_factor[0][2]" value="better"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better3">Better</label>
+                                    </span>
+
+
+
+
+                                    <!-- <select class="form-control" name="option_factor[0][2]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Equity in your home</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="worse4" name="option_factor[0][3]" value="worse"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="worse4">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same4" name="option_factor[0][3]" value="same"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same4">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better4" name="option_factor[0][3]" value="better"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better4">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select class="form-control" name="option_factor[0][3]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Difficulty in moving home</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="worse5" name="option_factor[0][4]" value="worse"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="worse5">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same5" name="option_factor[0][4]" value="same"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same5">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better5" name="option_factor[0][4]" value="better"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better5">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select class="form-control" name="option_factor[0][4]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Control of how you live your life</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="worse6" name="option_factor[0][5]" value="worse"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="worse6">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same6" name="option_factor[0][5]" value="same"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same6">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better6" name="option_factor[0][5]" value="better"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better6">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select class="form-control" name="option_factor[0][5]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Pride in your home</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="worse7" name="option_factor[0][6]" value="worse"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="worse7">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same7" name="option_factor[0][6]" value="same"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same7">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better7" name="option_factor[0][6]" value="better"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better7">Better</label>
+                                    </span>
+
+
+
+
+                                    <!--             
+                                            <select class="form-control" name="option_factor[0][6]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Living close to shops and
+                                    services</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="worse8" name="option_factor[0][7]" value="worse"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="worse8">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same8" name="option_factor[0][7]" value="same"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same8">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better8" name="option_factor[0][7]" value="better"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better8">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select class="form-control" name="option_factor[0][7]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Will suit you as you get older</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="worse9" name="option_factor[0][8]" value="worse"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="worse9">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same9" name="option_factor[0][8]" value="same"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same9">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better9" name="option_factor[0][8]" value="better"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better9">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select class="form-control" name="option_factor[0][8]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Managing cleaning and repairs</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="worse10" name="option_factor[0][9]" value="worse"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="worse10">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same10" name="option_factor[0][9]" value="same"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same10">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better10" name="option_factor[0][9]" value="better"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better10">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select class="form-control" name="option_factor[0][9]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+                        <div class="tab-pane fade" id="tab_content2" role="tabpanel" aria-labelledby="profile-tab">
+
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Living close to family</label>
+                                <div class="col-sm-8">
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse11" value="worse" name="option_factor[1][0]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse11">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same11" value="same" name="option_factor[1][0]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same11">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better11" value="better" name="option_factor[1][0]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better11">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[1][0]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Living close to friends</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse12" value="worse" name="option_factor[1][1]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse12">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same12" value="same" name="option_factor[1][1]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same12">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better12" value="better" name="option_factor[1][1]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better12">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[1][1]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Weekly cost of living</label>
+                                <div class="col-sm-8">
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse13" value="worse" name="option_factor[1][2]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse13">Worse</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same13" value="same" name="option_factor[1][2]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same13">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better13" value="better" name="option_factor[1][2]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better13">Better</label>
+                                    </span>
+
+                                    <!-- <select  class="form-control" name="option_factor[1][2]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Equity in your home</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse14" value="worse" name="option_factor[1][3]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse14">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same14" value="same" name="option_factor[1][3]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same14">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better14" value="better" name="option_factor[1][3]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better14">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select class="form-control" name="option_factor[1][3]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Difficulty in moving home</label>
+                                <div class="col-sm-8">
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse15" value="worse" name="option_factor[1][4]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse15">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same15" value="same" name="option_factor[1][4]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same15">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better15" value="better" name="option_factor[1][4]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better15">Better</label>
+                                    </span>
+
+
+                                    <!-- <select class="form-control" name="option_factor[1][4]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Control of how you live your life</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse16" value="worse" name="option_factor[1][5]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse16">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same16" value="same" name="option_factor[1][5]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same16">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better16" value="better" name="option_factor[1][5]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better16">Better</label>
+                                    </span>
+
+
+                                    <!--             
+                                            <select class="form-control" name="option_factor[1][5]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Pride in your home</label>
+                                <div class="col-sm-8">
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse17" value="worse" name="option_factor[1][6]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse17">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same17" value="same" name="option_factor[1][6]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same17">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better17" value="better" name="option_factor[1][6]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better17">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select class="form-control" name="option_factor[1][6]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Living close to shops and
+                                    services</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse18" value="worse" name="option_factor[1][7]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse18">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same18" value="same" name="option_factor[1][7]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same18">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better18" value="better" name="option_factor[1][7]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better18">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select class="form-control" name="option_factor[1][7]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Will suit you as you get older</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse19" value="worse" name="option_factor[1][8]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse19">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same19" value="same" name="option_factor[1][8]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same19">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better19" value="better" name="option_factor[1][8]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better19">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select class="form-control" name="option_factor[1][8]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Managing cleaning and repairs</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse20" value="worse" name="option_factor[1][9]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse20">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same20" value="same" name="option_factor[1][9]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same20">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better20" value="better" name="option_factor[1][9]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better20">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select class="form-control" name="option_factor[1][9]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="tab-pane fade" id="tab_content3" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Living close to family</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse21" value="worse" name="option_factor[2][0]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse21">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same21" value="same" name="option_factor[2][0]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same21">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better21" value="better" name="option_factor[2][0]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better21">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[2][0]">
+                                            <option value="same">Same</option>
+                                            <option value="better">Better</option>
+                                            <option value="worse">Worse</option>
+                                        </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Living close to friends</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse22" value="worse" name="option_factor[2][1]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse22">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same22" value="same" name="option_factor[2][1]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same22">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better22" value="better" name="option_factor[2][1]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better22">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[2][1]">
+                                            <option value="same">Same</option>
+                                            <option value="better">Better</option>
+                                            <option value="worse">Worse</option>
+                                        </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Weekly cost of living</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse23" value="worse" name="option_factor[2][2]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse23">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same23" value="same" name="option_factor[2][2]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same23">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better23" value="better" name="option_factor[2][2]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better23">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[2][2]">
+                                            <option value="same">Same</option>
+                                            <option value="better">Better</option>
+                                            <option value="worse">Worse</option>
+                                        </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Equity in your home</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse24" value="worse" name="option_factor[2][3]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse24">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same24" value="same" name="option_factor[2][3]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same24">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better24" value="better" name="option_factor[2][3]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better24">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[2][3]">
+                                            <option value="same">Same</option>
+                                            <option value="better">Better</option>
+                                            <option value="worse">Worse</option>
+                                        </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Difficulty in moving home</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse25" value="worse" name="option_factor[2][4]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse25">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same25" value="same" name="option_factor[2][4]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same25">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better25" value="better" name="option_factor[2][4]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better25">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[2][4]">
+                                            <option value="same">Same</option>
+                                            <option value="better">Better</option>
+                                            <option value="worse">Worse</option>
+                                        </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Control of how you live your life</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse26" value="worse" name="option_factor[2][5]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse26">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same26" value="same" name="option_factor[2][5]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same26">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better26" value="better" name="option_factor[2][5]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better26">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[2][5]">
+                                            <option value="same">Same</option>
+                                            <option value="better">Better</option>
+                                            <option value="worse">Worse</option>
+                                        </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Pride in your home</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse27" value="worse" name="option_factor[2][6]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse27">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same27" value="same" name="option_factor[2][6]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same27">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better27" value="better" name="option_factor[2][6]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better27">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[2][6]">
+                                            <option value="same">Same</option>
+                                            <option value="better">Better</option>
+                                            <option value="worse">Worse</option>
+                                        </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Living close to shops and
+                                    services</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse28" value="worse" name="option_factor[2][7]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse28">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same28" value="same" name="option_factor[2][7]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same28">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better28" value="better" name="option_factor[2][7]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better28">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[2][7]">
+                                            <option value="same">Same</option>
+                                            <option value="better">Better</option>
+                                            <option value="worse">Worse</option>
+                                        </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Will suit you as you get older</label>
+                                <div class="col-sm-8">
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse29" value="worse" name="option_factor[2][8]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse29">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same29" value="same" name="option_factor[2][8]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same29">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better29" value="better" name="option_factor[2][8]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better29">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[2][8]">
+                                            <option value="same">Same</option>
+                                            <option value="better">Better</option>
+                                            <option value="worse">Worse</option>
+                                        </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Managing cleaning and repairs</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse30" value="worse" name="option_factor[2][9]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse30">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same30" value="same" name="option_factor[2][9]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same30">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better30" value="better" name="option_factor[2][9]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better30">Better</label>
+                                    </span>
+
+
+                                    <!--     
+                                    <select  class="form-control" name="option_factor[2][9]">
+                                            <option value="same">Same</option>
+                                            <option value="better">Better</option>
+                                            <option value="worse">Worse</option>
+                                        </select> -->
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="tab-pane fade" id="tab_content4" role="tabpanel" aria-labelledby="contact-tab">
+
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Living close to family</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse31" value="worse" name="option_factor[3][0]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse31">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same31" value="same" name="option_factor[3][0]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same31">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better31" value="better" name="option_factor[3][0]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better31">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[3][0]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Living close to friends</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse32" value="worse" name="option_factor[3][1]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse32">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same32" value="same" name="option_factor[3][1]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same32">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better32" value="better" name="option_factor[3][1]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better32">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[3][1]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Weekly cost of living</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse33" value="worse" name="option_factor[3][2]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse33">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same33" value="same" name="option_factor[3][2]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same33">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better33" value="better" name="option_factor[3][2]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better33">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[3][2]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Equity in your home</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse34" value="worse" name="option_factor[3][3]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse34">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same34" value="same" name="option_factor[3][3]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same34">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better34" value="better" name="option_factor[3][3]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better34">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[3][3]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Difficulty in moving home</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse35" value="worse" name="option_factor[3][4]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse35">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same35" value="same" name="option_factor[3][4]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same35">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better35" value="better" name="option_factor[3][4]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better35">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[3][4]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Control of how you live your life</label>
+                                <div class="col-sm-8">
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse36" value="worse" name="option_factor[3][5]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse36">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same36" value="same" name="option_factor[3][5]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same36">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better36" value="better" name="option_factor[3][5]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better36">Better</label>
+                                    </span>
+
+
+                                    <!-- <select  class="form-control" name="option_factor[3][5]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Pride in your home</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse37" value="worse" name="option_factor[3][6]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse37">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same37" value="same" name="option_factor[3][6]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same37">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better37" value="better" name="option_factor[3][6]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better37">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[3][6]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Living close to shops and
+                                    services</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse38" value="worse" name="option_factor[3][7]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse38">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same38" value="same" name="option_factor[3][7]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same38">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better38" value="better" name="option_factor[3][7]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better38">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[3][7]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Will suit you as you get older</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse39" value="worse" name="option_factor[3][8]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse39">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same39" value="same" name="option_factor[3][8]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same39">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better39" value="better" name="option_factor[3][8]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better39">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[3][8]">
+                                                    <option value="same">Same</option>
+                                                    <option value="better">Better</option>
+                                                    <option value="worse">Worse</option>
+                                                </select> -->
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="v" class="col-sm-4 col-form-label">Managing cleaning and repairs</label>
+                                <div class="col-sm-8">
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="Worse40" value="worse" name="option_factor[3][9]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="Worse40">Worse</label>
+                                    </span>
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="same40" value="same" name="option_factor[3][9]"
+                                            class="custom-control-input" checked="checked">
+                                        <label class="custom-control-label" for="same40">Same</label>
+                                    </span>
+
+                                    <span class="custom-control custom-radio">
+                                        <input type="radio" id="better40" value="better" name="option_factor[3][9]"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="better40">Better</label>
+                                    </span>
+
+
+
+                                    <!-- <select  class="form-control" name="option_factor[3][9]">
+                                                <option value="same">Same</option>
+                                                <option value="better">Better</option>
+                                                <option value="worse">Worse</option>
+                                        </select> -->
+
+                                </div>
+                            </div>
+
+                            <!-- <div class="form-group row">
+                               
+                                <div class="col-sm-5 m-auto">
+                                   <button class="btn btn-secondary btn-lg btn-block"> Next </button>
+                                </div>
+                            </div> -->
+
+
+
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-5 m-auto">
+                                <input type="button" class="btn btn-secondary btn-lg btn-block" id="backToSecond"
+                                    value="Previous" />
+                                <button class="btn btn-info btn-lg btn-block" id="thirdSubmitBtn"> Get the Best Decision
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="card mb-5 step-4 d-none mt-3">
+            <div class="card-header">
+                FINISHED! Your Best Choice Is...
+            </div>
+            <div class="card-body">
+                <table class="table" style="text-align: center;">
+                    <thead class="thead-dark">
+                        <tr>
+
+
+
+
+                            <th scope="col-md-3" width="210px">Rank</th>
+                            <th scope="col-md-3">Score</th>
+                            <th scope="col-md-6">Choice</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row text-justify"><img src="badge.png" alt=""></td>
+                            <td id="score_1"></td>
+                            <td id="option_1"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2nd Best Choice</th>
+
+                            <td id="score_2"></td>
+                            <td id="option_2"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3rd Best Choice</th>
+
+                            <td id="score_3"></td>
+                            <td id="option_3"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4th Best Choice</th>
+
+                            <td id="score_4"></td>
+                            <td id="option_4"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5th Best Choice</th>
+
+                            <td id="score_5"></td>
+                            <td id="option_5"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="form-group row">
+                    <div class="col-sm-5 m-auto">
+                        <input type="button" class="btn btn-secondary btn-lg btn-block" id="backToThird" value="Previous">
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+    <div class="overlay">
+        <div class="overlay__inner">
+            <div class="overlay__content"><span class="spinner"></span></div>
+        </div>
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+    <script>
+        jQuery(document).ready(function ($) {
+            $("#step1Form").submit(function (event) {
+                event.preventDefault();
+                var name = $("#name").val();
+                var option1 = $("#option1").val();
+                var option2 = $("#option2").val();
+                var option3 = $("#option3").val();
+                var option4 = $("#option4").val();
+                data = 'action=step1&name=' + name + '&option0=' + option1 + '&option1=' + option2 + '&option2=' + option3 + '&option3=' + option4;
+                $.ajax({
+                    url: "handle.php",
+                    type: 'POST',
+                    data: data,
+                    dataType: 'json',
+                    beforeSend: function () {
+                        $('.overlay').show();
+                    },
+                    success: function (result) {
+                        $('.overlay').hide();
+                        $('.step-1').addClass("d-none");
+                        $('.step-2').removeClass("d-none");
+                        // if (result.message) {
+                        //     form.find('.iwp-respon-msg').html(result.message).slideDown(300);
+                        //     button.removeClass('iwp-loading');
+                        // }
+                        // if (result.redirect) {
+                        //     window.location.href = result.redirect;
+                        // }
+                    }
+                });
+            });
+
+
+            $("#secondSubmitBtn").click(function () {
+                var priority0 = $("#priority_0").val();
+                var priority1 = $("#priority_1").val();
+                var priority2 = $("#priority_2").val();
+                var priority3 = $("#priority_3").val();
+                var priority4 = $("#priority_4").val();
+                var priority5 = $("#priority_5").val();
+                var priority6 = $("#priority_6").val();
+                var priority7 = $("#priority_7").val();
+                var priority8 = $("#priority_8").val();
+                var priority9 = $("#priority_9").val();
+
+                data = 'action=step2&priority0=' + priority0 + '&priority1=' + priority1 + '&priority2=' + priority2 + '&priority3=' + priority3 + '&priority4=' + priority4 + '&priority5=' + priority5 + '&priority6=' + priority6 + '&priority7=' + priority7 + '&priority8=' + priority8 + '&priority9=' + priority9;
+                $.ajax({
+                    url: "handle.php",
+                    type: 'POST',
+                    data: data,
+                    dataType: 'json',
+                    beforeSend: function () {
+                        $('.overlay').show();
+                    },
+                    success: function (result) {
+                        $('.overlay').hide();
+                        $('.step-2').addClass("d-none");
+                        $('.step-3').removeClass("d-none");
+
+                        $('#tab1').text($("#option1").val());
+                        $('#tab2').text($("#option2").val());
+                        $('#tab3').text($("#option3").val());
+                        $('#tab4').text($("#option4").val());
+
+
+                    }
+                });
+            });
+
+
+
+
+
+
+            $("#step3Form").submit(function (event) {
+                event.preventDefault();
+                var formData = $("#step3Form").serialize();
+                data = 'action=step3&' + formData;
+                $.ajax({
+                    url: "handle.php",
+                    type: 'POST',
+                    data: data,
+                    dataType: 'json',
+                    beforeSend: function () {
+                        $('.overlay').show();
+                    },
+                    success: function (result) {
+                        $('.overlay').hide();
+                        $('.step-3').addClass("d-none");
+                        $('.step-4').removeClass("d-none");
+                        var res = result.data;
+                        $('#score_1').text(res[0]["score"]);
+                        $('#option_1').text(res[0]["option"]);
+                        $('#score_2').text(res[1]["score"]);
+                        $('#option_2').text(res[1]["option"]);
+                        $('#score_3').text(res[2]["score"]);
+                        $('#option_3').text(res[2]["option"]);
+                        $('#score_4').text(res[3]["score"]);
+                        $('#option_4').text(res[3]["option"]);
+                        $('#score_5').text(res[4]["score"]);
+                        $('#option_5').text(res[4]["option"]);
+                    }
+                });
+            });
+
+
+
+            $("#backToFirst").click(function () {
+                $('.step-2').addClass("d-none");
+                $('.step-1').removeClass("d-none");
+            });
+            $("#backToSecond").click(function () {
+                $('.step-3').addClass("d-none");
+                $('.step-2').removeClass("d-none");
+            });
+            $("#backToThird").click(function () {
+                $('.step-4').addClass("d-none");
+                $('.step-3').removeClass("d-none");
+            });
+
+            
+        });
+
+    </script>
+    <script>
+        var slider1 = document.getElementById("priority_0");
+        //var output = document.getElementById("value");
+        //output.innerHTML = slider.value; // Display the default slider value
+        slider1.oninput = function () {
+            $(this).closest('.slidecontainer').find('.rangeValue').text(this.value);
+        }
+
+        var slider2 = document.getElementById("priority_1");
+        slider2.oninput = function () {
+            $(this).closest('.slidecontainer').find('.rangeValue').text(this.value);
+        }
+
+        var slider3 = document.getElementById("priority_2");
+        slider3.oninput = function () {
+            $(this).closest('.slidecontainer').find('.rangeValue').text(this.value);
+        }
+
+        var slider4 = document.getElementById("priority_3");
+        slider4.oninput = function () {
+            $(this).closest('.slidecontainer').find('.rangeValue').text(this.value);
+        }
+
+        var slider5 = document.getElementById("priority_4");
+        slider5.oninput = function () {
+            $(this).closest('.slidecontainer').find('.rangeValue').text(this.value);
+        }
+
+        var slider6 = document.getElementById("priority_5");
+        slider6.oninput = function () {
+            $(this).closest('.slidecontainer').find('.rangeValue').text(this.value);
+        }
+
+        var slider7 = document.getElementById("priority_6");
+        slider7.oninput = function () {
+            $(this).closest('.slidecontainer').find('.rangeValue').text(this.value);
+        }
+
+        var slider8 = document.getElementById("priority_7");
+        slider8.oninput = function () {
+            $(this).closest('.slidecontainer').find('.rangeValue').text(this.value);
+        }
+
+        var slider9 = document.getElementById("priority_8");
+        slider9.oninput = function () {
+            $(this).closest('.slidecontainer').find('.rangeValue').text(this.value);
+        }
+
+        var slider10 = document.getElementById("priority_9");
+        slider10.oninput = function () {
+            $(this).closest('.slidecontainer').find('.rangeValue').text(this.value);
+        }
+    </script>
+</body>
+
+</html>
